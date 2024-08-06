@@ -8,7 +8,7 @@ const Footer = () => {
         Copyright © 2024 Za Gasy Ko. All rights reserved.
       </div>
       <div className="mt-1 flex justify-center gap-1 text-center text-sm text-gray-500 dark:text-gray-600">
-        <span>Made by Jimmy Rasolosoa</span>
+        <span>Made by Jimmy Rasolosoa </span>
         <span>·</span>
         <span>
           <a
