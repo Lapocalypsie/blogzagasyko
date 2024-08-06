@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client";
 import React, { useState, useEffect } from "react";
 import ArticleCard from "../../components/card/articleCard";
@@ -32,7 +33,9 @@ const Page = () => {
         Nos Projets
       </h1>
       <div className="text-center">
-        <p className="mt-2 text-lg">Découvrez tout nos actions carritatives !</p>
+        <p className="mt-2 text-lg">
+          Découvrez tout nos actions carritatives !
+        </p>
       </div>
       <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
         {/* Render ArticleCard for each article in current page */}

@@ -109,8 +109,8 @@ const Home = () => {
           </div>
           <div className="border-l-4 border-amber-500 pl-4 mt-12">
             <p className="text-5xl font-bold italic text-blue-400">
-              "Qui a vu Madagascar très pauvre, a vu aussi Madagascar très
-              riche..."
+              “Qui a vu Madagascar très pauvre, a vu aussi Madagascar très
+              riche...”
             </p>
           </div>
         </div>
