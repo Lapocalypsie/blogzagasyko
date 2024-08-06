@@ -9,6 +9,7 @@ const nextConfig = {
       "img.freepik.com",
       "cdn.sanity.io",
       "images.prismic.io",
+      "picsum.photos"
     ],
   },
 };

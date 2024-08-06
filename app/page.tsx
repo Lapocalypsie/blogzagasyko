@@ -1,5 +1,6 @@
 // pages/index.js
 import React from "react";
+import Slider from "./components/diapo/slider";
 
 const Home = () => {
   return (
@@ -42,24 +43,27 @@ const Home = () => {
       <section className="px-6 py-20 md:py-28 bg-white text-black leading-relaxed">
         <div className="mx-auto w-full max-w-6xl">
           <h1 className="font-semibold leading-tight tracking-tight md:leading-tight text-4xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">
-            Za Gasy Ko
+            Quel est notre but ?
           </h1>
           <p className="mb-7 last:mb-0">
-            Za Gasy Ko est une association caritative dévouée à apporter de
-            l&apos;aide et du soutien aux habitants de Madagascar, en mettant
-            l&apos;accent sur les enfants qui vivent dans des conditions de
-            pauvreté extrême. Madagascar, une île magnifique mais souvent
-            confrontée à des défis économiques et sociaux, trouve en Za Gasy Ko
-            une lueur d&apos;espoir.
+            Comme d&apos;autres associations humanitaires, nous voulons juste
+            <span className="font-bold text-red-300">
+              {" "}
+              apporter un peu d&apos;aide{" "}
+            </span>{" "}
+            à Madagascar ! Lorsqu&apos;on a été témoin d&apos;une grande
+            pauvreté, on ne peut pas faire semblant de n&apos;avoir rien vu. La
+            suite dépend des moyens !
           </p>
+          <h1 className="font-semibold leading-tight tracking-tight md:leading-tight text-4xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">
+            Comment agir ?
+          </h1>
           <p className="mb-7 last:mb-0">
-            Fondée par des individus passionnés et engagés, dont la diversité
-            des horizons rappelle la richesse culturelle de Madagascar, Za Gasy
-            Ko œuvre sans relâche pour améliorer la vie des communautés
-            malgaches. Grâce à des programmes variés et ciblés,
-            l&apos;association s&apos;efforce de répondre aux besoins essentiels
-            tels que l&apos;accès à l&apos;éducation, à la nourriture, aux soins
-            médicaux et à un environnement sain.
+            Nous travaillons avec des bénévoles sur places. Des bénévoles qui
+            ont les mêmes principes que nous. Des personnes qui offrent
+            gratuitement leurs services ; qui font les tâches avec amour ; qui
+            sont nos représentantes sur place ; qui ont la joie de servir leurs
+            semblables et intègres, quelque soit leurs situations.
           </p>
           <p className="mb-7 last:mb-0">
             L&apos;éducation occupe une place centrale dans la mission de Za
@@ -93,6 +97,22 @@ const Home = () => {
             les difficultés et où la compassion ouvre la voie à un changement
             positif durable.
           </p>
+          <div className="items-center">
+            <h1 className="font-semibold leading-tight tracking-tight md:leading-tight text-4xl md:text-5xl mb-7 mt-12 first:mt-0 last:mb-0">
+              Quelques photos de Madagascar
+            </h1>
+            <div className="items-center mx-12">
+              <div className="flex justify-center ">
+                <Slider />
+              </div>
+            </div>
+          </div>
+          <div className="border-l-4 border-amber-500 pl-4 mt-12">
+            <p className="text-5xl font-bold italic text-blue-400">
+              "Qui a vu Madagascar très pauvre, a vu aussi Madagascar très
+              riche..."
+            </p>
+          </div>
         </div>
       </section>
     </section>

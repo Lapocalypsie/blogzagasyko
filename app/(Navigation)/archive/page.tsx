@@ -29,10 +29,10 @@ const Page = () => {
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 relative">
       <h1 className="text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-        Archive
+        Nos Projets
       </h1>
       <div className="text-center">
-        <p className="mt-2 text-lg">See all posts we have ever written.</p>
+        <p className="mt-2 text-lg">Découvrez tout nos actions carritatives !</p>
       </div>
       <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
         {/* Render ArticleCard for each article in current page */}
@@ -85,7 +85,7 @@ const Page = () => {
                 d="M15.75 19.5 8.25 12l7.5-7.5"
               ></path>
             </svg>
-            <span>Previous</span>
+            <span>Précédent</span>
           </button>
           <button
             onClick={handleNextPage}
@@ -100,7 +100,7 @@ const Page = () => {
                 : ""
             } dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300`}
           >
-            <span>Next</span>
+            <span>Suivant</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

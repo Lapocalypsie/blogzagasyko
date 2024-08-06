@@ -58,11 +58,17 @@ const NavBar = () => {
             </a>
             <a
               className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+              href="/gallery"
+            >
+              Gallery
+            </a>
+            <a
+              className="px-5 py-2 text-sm font-medium text-black hover:text-blue-500 dark:text-gray-400 border border-blue-500 rounded-md bg-red-200" 
               target="_blank"
               rel="noopener noreferrer"
-              href="https://web3templates.com/templates/stablo-minimal-blog-website-template"
+              href="https://zanakagasykoloina.blogspot.com/2021/04/cagnotte-en-cours.html"
             >
-              Télécharger
+              Faire un don
             </a>
           </div>
 
@@ -114,19 +120,17 @@ const NavBar = () => {
             </a>
             <a
               className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://stablo-pro.web3templates.com/"
+              href="/gallery"
             >
-              Version Pro
+              Galery
             </a>
             <a
               className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
               target="_blank"
               rel="noopener noreferrer"
-              href="https://web3templates.com/templates/stablo-minimal-blog-website-template"
+              href="https://zanakagasykoloina.blogspot.com/2021/04/cagnotte-en-cours.html"
             >
-              Télécharger
+              Faire un don
             </a>
           </div>
         )}

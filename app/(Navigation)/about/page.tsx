@@ -5,19 +5,19 @@ const Page = () => {
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
       <h1 className="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-        About
+        A propos de Nous
       </h1>
       <div className="text-center">
-        <p className="text-lg">We are a small passionate team.</p>
+        <p className="text-lg">L&apos;équipe derrière Za Gasy Ko</p>
       </div>
       <div className="mb-16 mt-6 grid grid-cols-3 gap-5 md:mb-32 md:mt-16 md:gap-16">
         <div className="relative aspect-square overflow-hidden rounded-md bg-slate-50 odd:translate-y-10 odd:md:translate-y-16">
-          <a href="/author/mario-sanchez">
+          <a href="/author/jimmy-rasolosoa">
             <Image
-              alt="Mario Sanchez"
+              alt="Jimmy RASOLOSOA"
               loading="lazy"
               decoding="async"
-              src="https://cdn.sanity.io/images/cijrdavx/production/4a21e3f085ed310d00fbbd294eb2392cde7f9acc-3648x3648.jpg?w=2000&auto=format"
+              src="/people/jimmy.png"
               layout="fill"
               objectFit="cover"
               sizes="(max-width: 320px) 100vw, 320px"
@@ -25,12 +25,12 @@ const Page = () => {
           </a>
         </div>
         <div className="relative aspect-square overflow-hidden rounded-md bg-slate-50 odd:translate-y-10 odd:md:translate-y-16">
-          <a href="/author/joshua-wood">
+          <a href="/author/norosoa">
             <Image
-              alt="Joshua Wood"
+              alt="Norosoa Rasolosoa"
               loading="lazy"
               decoding="async"
-              src="https://cdn.sanity.io/images/cijrdavx/production/cd477178ed12f28ef668adaf9fcae6b8fc351a08-4480x6415.jpg?w=2000&auto=format"
+              src="/people/norosoa.jpg"
               layout="fill"
               objectFit="cover"
               sizes="(max-width: 320px) 100vw, 320px"
@@ -38,12 +38,12 @@ const Page = () => {
           </a>
         </div>
         <div className="relative aspect-square overflow-hidden rounded-md bg-slate-50 odd:translate-y-10 odd:md:translate-y-16">
-          <a href="/author/erika-oliver">
+          <a href="/author/jonathan">
             <Image
-              alt="Erika Oliver"
+              alt="Jonathan Rasolosoa"
               loading="lazy"
               decoding="async"
-              src="https://cdn.sanity.io/images/cijrdavx/production/4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg?w=2000&auto=format"
+              src="/people/jo.jpg"
               layout="fill"
               objectFit="cover"
               sizes="(max-width: 320px) 100vw, 320px"
@@ -53,18 +53,16 @@ const Page = () => {
       </div>
       <div className="prose mx-auto mt-14 text-center dark:prose-invert">
         <p>
-          We provide real-time connectivity to enable software providers and
-          financial institutions to build integrated products for their small
-          business customers.
+          Originaire de Madagascar, notre équipe est passionnée par la promotion et la préservation de la culture malgache à travers des initiatives innovantes et engagées. Chez Za Gasy Ko, nous croyons en la puissance de la communauté et de l'héritage culturel pour inspirer et unir les gens.
         </p>
         <p>
-          Our API infrastructure is leveraged by clients ranging from lenders to
-          corporate card providers and business forecasting tools, with use
-          cases including automatic reconciliation, business dashboarding, and
-          loan decisioning.
+          Notre mission est de mettre en lumière la richesse et la diversité de Madagascar, tout en créant des opportunités pour les talents locaux de s'exprimer et de prospérer. Nous travaillons ensemble pour créer des projets qui reflètent nos valeurs de solidarité, de respect et de créativité.
         </p>
         <p>
-          <a href="/contact">Get in touch</a>
+          Chacun de nos membres apporte une expertise unique et une passion profonde pour notre culture et notre pays. Ensemble, nous construisons un avenir où la culture malgache brille à travers le monde.
+        </p>
+        <p>
+          Merci de votre soutien et de votre intérêt pour Za Gasy Ko. Pour en savoir plus sur nos projets ou pour collaborer avec nous, n'hésitez pas à <a href="/contact" className="text-red-300">nous contacter</a>.
         </p>
       </div>
     </div>
