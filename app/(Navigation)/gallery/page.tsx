@@ -2,34 +2,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { text } from "stream/consumers";
+import { allImages } from "@/app/utils/const";
 
 const GalleryPage = () => {
-  const allImages = [
-    { src: "/madaLandscape/Berenty.jpg", alt: "Image 1" },
-    { src: "/madaLandscape/majunga-baobab.jpg", alt: "Image 2" },
-    { src: "/madaLandscape/Morondava Baobab.jpg", alt: "Image 3" },
-    { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4" },
-    { src: "/madaLandscape/Sainte Marie.jpg", alt: "Image 5" },
-    { src: "/madaLandscape/Tsingy - Copy.jpg", alt: "Image 6" },
-    { src: "/madaLandscape/Berenty.jpg", alt: "Image 1" },
-    { src: "/madaLandscape/majunga-baobab.jpg", alt: "Image 2" },
-    { src: "/madaLandscape/Morondava Baobab.jpg", alt: "Image 3" },
-    { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4" },
-    { src: "/madaLandscape/Sainte Marie.jpg", alt: "Image 5" },
-    { src: "/madaLandscape/Tsingy - Copy.jpg", alt: "Image 6" },
-    { src: "/madaLandscape/Berenty.jpg", alt: "Image 1" },
-    { src: "/madaLandscape/majunga-baobab.jpg", alt: "Image 2" },
-    { src: "/madaLandscape/Morondava Baobab.jpg", alt: "Image 3" },
-    { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4" },
-    { src: "/madaLandscape/Sainte Marie.jpg", alt: "Image 5" },
-    { src: "/madaLandscape/Tsingy - Copy.jpg", alt: "Image 6" },
-    { src: "/madaLandscape/Berenty.jpg", alt: "Image 1" },
-    { src: "/madaLandscape/majunga-baobab.jpg", alt: "Image 2" },
-    { src: "/madaLandscape/Morondava Baobab.jpg", alt: "Image 3" },
-    { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4" },
-    { src: "/madaLandscape/Sainte Marie.jpg", alt: "Image 5" },
-    { src: "/madaLandscape/Tsingy - Copy.jpg", alt: "Image 6" },
-  ];
+ 
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -73,7 +50,7 @@ const GalleryPage = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{image.alt}</h2>
               <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                {image.text ? image.text : "Description to be added"}
               </p>
             </div>
           </div>
@@ -115,7 +92,7 @@ const GalleryPage = () => {
                 d="M15.75 19.5 8.25 12l7.5-7.5"
               ></path>
             </svg>
-            <span>Previous</span>
+            <span>Précédent</span>
           </button>
           <button
             onClick={handleNextPage}
@@ -130,7 +107,7 @@ const GalleryPage = () => {
                 : ""
             } dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300`}
           >
-            <span>Next</span>
+            <span>Suivant</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

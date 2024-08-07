@@ -1,125 +1,117 @@
 // utils/const.js
-export const articles = [
-  {
-    title: "Second Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "second-article",
-    content: "Content of the second article",
-  },
-  {
-    title: "Third Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "Third-article",
-    content: "Content of the second article",
-  },
-  {
-    title: "Fourth Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "Fourth-article",
-    content: "Content of the second article",
-  },
-  {
-    title: "Fifth Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "Fifth-article",
-    content: "Content of the second article",
-  },
-  {
-    title: "Sixth Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "Six-article",
-    content: "Content of the second article",
-  },
-  {
-    title: "Seven Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "seven-article",
-    content: "Content of the second article",
-  },
-  {
-    title: "Eight Article",
-    category: "Health",
-    author: {
-      name: "Author Two",
-      slug: "author-two",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-02",
-    imageSrc:
-      "https://raw.githubusercontent.com/luanfujun/deep-photo-styletransfer/master/examples/style/tar13.png",
-    slug: "eight-article",
-    content: "Content of the second article",
-  },
-  
-];
-
 export const authors = [
   {
     name: "Norosoa Rasolosoa",
     slug: "norosoa",
-    avatar:
-      "/people/norosoa.jpg",
+    avatar: "/people/norosoa.jpg",
   },
   {
     name: "Jimmy Rasolosoa",
     slug: "jimmy-rasolosoa",
-    avatar:
-      "/people/jimmy.png",
+    avatar: "/people/jimmy.png",
   },
   // Add more authors as needed
+];
+
+export const allImages = [
+  {
+    src: "/madaLandscape/Berenty.jpg",
+    alt: "Berenty",
+    text: "La réserve de Berenty est une petite réserve privée, proche d'Amboasary Sud, Anosy. Il est situé le long de la rivière Mandrare, dans l’écorégion de forêt épineuse semi-aride de l’extrême sud de Madagascar.",
+  },
+  {
+    src: "/madaLandscape/majunga-baobab.jpg",
+    alt: "Les baobab de Majunga",
+    text: "Les baobabs de Majunga sont des arbres emblématiques de la région de Majunga. Ils sont situés à proximité de la ville de Majunga, sur la côte nord-ouest de Madagascar.",
+  },
+  {
+    src: "/madaLandscape/Morondava Baobab.jpg",
+    alt: "Les baobab de Morondava",
+    text: "Les baobabs de Morondava sont des arbres emblématiques de la région de Morondava. Ils sont situés à proximité de la ville de Morondava, sur la côte ouest de Madagascar.",
+  },
+  {
+    src: "/madaLandscape/Nosy-Be-.jpg",
+    alt: "Nosy Be",
+    text: "Nosy Be est une île située au nord-ouest de Madagascar. Elle est connue pour ses plages de sable blanc, ses eaux turquoise et sa faune marine diversifiée.",
+  },
+  {
+    src: "/madaLandscape/Sainte Marie.jpg",
+    alt: "Sainte Marie",
+    text: "Sainte Marie est une île située à l'est de Madagascar. Elle est connue pour ses plages de sable blanc, ses eaux turquoise et sa faune marine diversifiée.",
+  },
+  {
+    src: "/madaLandscape/Tsingy - Copy.jpg",
+    alt: "tsingy de bemaraha ",
+    text: "Le parc national des Tsingy de Bemaraha est un parc national situé dans la région de Melaky, à l'ouest de Madagascar. Il est connu pour ses formations calcaires uniques appelées tsingy.",
+  },
+  {
+    src: "/madaLandscape/Berenty.jpg",
+    alt: "Image 1",
+    text: "La réserve de Berenty est une petite réserve privée, proche d'Amboasary Sud, Anosy. Il est situé le long de la rivière Mandrare, dans l’écorégion de forêt épineuse semi-aride de l’extrême sud de Madagascar.",
+  },
+  {
+    src: "/madaLandscape/majunga-baobab.jpg",
+    alt: "Image 2",
+    text: "Les baobabs de Majunga sont des arbres emblématiques de la région de Majunga. Ils sont situés à proximité de la ville de Majunga, sur la côte nord-ouest de Madagascar.",
+  },
+  {
+    src: "/madaLandscape/Morondava Baobab.jpg",
+    alt: "Image 3",
+    text: "Les baobabs de Morondava sont des arbres emblématiques de la région de Morondava. Ils sont situés à proximité de la ville de Morondava, sur la côte ouest de Madagascar.",
+  },
+  { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4", text: "to be added" },
+  {
+    src: "/madaLandscape/Sainte Marie.jpg",
+    alt: "Image 5",
+    text: "to be added",
+  },
+  {
+    src: "/madaLandscape/Tsingy - Copy.jpg",
+    alt: "Image 6",
+    text: "to be added",
+  },
+  { src: "/madaLandscape/Berenty.jpg", alt: "Image 1", text: "to be added" },
+  {
+    src: "/madaLandscape/majunga-baobab.jpg",
+    alt: "Image 2",
+    text: "to be added",
+  },
+  {
+    src: "/madaLandscape/Morondava Baobab.jpg",
+    alt: "Image 3",
+    text: "to be added",
+  },
+  { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4", text: "to be added" },
+  {
+    src: "/madaLandscape/Sainte Marie.jpg",
+    alt: "Image 5",
+    text: "to be added",
+  },
+  {
+    src: "/madaLandscape/Tsingy - Copy.jpg",
+    alt: "Image 6",
+    text: "to be added",
+  },
+  { src: "/madaLandscape/Berenty.jpg", alt: "Image 1", text: "to be added" },
+  {
+    src: "/madaLandscape/majunga-baobab.jpg",
+    alt: "Image 2",
+    text: "to be added",
+  },
+  {
+    src: "/madaLandscape/Morondava Baobab.jpg",
+    alt: "Image 3",
+    text: "to be added",
+  },
+  { src: "/madaLandscape/Nosy-Be-.jpg", alt: "Image 4", text: "to be added" },
+  {
+    src: "/madaLandscape/Sainte Marie.jpg",
+    alt: "Image 5",
+    text: "to be added",
+  },
+  {
+    src: "/madaLandscape/Tsingy - Copy.jpg",
+    alt: "Image 6",
+    text: "to be added",
+  },
 ];

@@ -3,20 +3,40 @@
 import React, { useState, useEffect } from "react";
 import ArticleCard from "../../components/card/articleCard";
 import Link from "next/link";
-import articles from "@/app/utils/articles.json";
 
 const Page = () => {
-  // Pagination state
+  // State for articles and pagination
+  const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentArticles, setCurrentArticles] = useState([]);
   const articlesPerPage = 5; // Number of articles per page
 
-  // Pagination logic
+  // Fetch articles on component mount
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch("/api/database/Articles", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        setArticles(data.data || []); // Adjust according to your API response
+      } catch (error) {
+        console.error("Failed to fetch articles:", error);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  // Update current articles based on pagination
   useEffect(() => {
     const indexOfLastArticle = currentPage * articlesPerPage;
     const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
     setCurrentArticles(articles.slice(indexOfFirstArticle, indexOfLastArticle));
-  }, [currentPage]);
+  }, [currentPage, articles]);
 
   // Function to handle pagination navigation
   const handleNextPage = () => {

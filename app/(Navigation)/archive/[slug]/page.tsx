@@ -1,35 +1,77 @@
-//@ts-nocheck
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import articles  from "@/app/utils/articles.json";
+import LoadingPage from "@/app/components/shared/loading";
 
-const ArticlePage = ({ params }: { params: { slug: string } }) => {
-  const slug = params.slug;
-  const [article, setArticle] = useState<any>(null); // Ensure the type is set to 'any' or a proper type definition
+// Define TypeScript types for article data
+interface Author {
+  name: string;
+  avatar: string;
+}
 
+interface Article {
+  slug: string;
+  title: string;
+  category: string;
+  date: string;
+  author: Author;
+  imageSrc: string;
+  content: string;
+}
+
+interface ArticlePageProps {
+  params: { slug: string };
+}
+
+const ArticlePage: React.FC<ArticlePageProps> = ({ params }) => {
+  const { slug } = params;
+  const [article, setArticle] = useState<Article | null>(null);
+  const [articles, setArticles] = useState<Article[]>([]);
+
+  // Fetch articles on component mount
   useEffect(() => {
-    const foundArticle = articles.find(
-      (article) => article.slug.toLowerCase() === slug.toLowerCase()
-    );
-    console.log("Found article:", foundArticle);
-    setArticle(foundArticle);
-  }, [slug]);
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch("/api/database/Articles", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        setArticles(data.data || []); // Adjust according to your API response
+      } catch (error) {
+        console.error("Failed to fetch articles:", error);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
+  // Filter the article based on the slug
+  useEffect(() => {
+    if (articles.length > 0) {
+      const foundArticle = articles.find(
+        (article) => article.slug.toLowerCase() === slug.toLowerCase()
+      );
+      setArticle(foundArticle || null);
+    }
+  }, [articles, slug]);
 
   if (!article) {
-    return <div>Article not found or loading...</div>;
+    return <LoadingPage />;
   }
 
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 !pt-0">
-      <div className="mx-auto max-w-screen-md ">
+      <div className="mx-auto max-w-screen-md">
         <div className="flex justify-center mb-4">
           <span className="text-gray-500">{article.category}</span>
         </div>
         <h1 className="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
           {article.title}
         </h1>
-        <div className="mt-3 flex justify-center space-x-3 text-gray-500 ">
+        <div className="mt-3 flex justify-center space-x-3 text-gray-500">
           <div className="flex items-center gap-3">
             <div className="relative h-10 w-10 flex-shrink-0">
               <Image
@@ -49,7 +91,7 @@ const ArticlePage = ({ params }: { params: { slug: string } }) => {
               className="text-gray-500 dark:text-gray-400"
               dateTime={article.date}
             >
-              {new Date(article.date).toLocaleDateString("fr-fr", {
+              {new Date(article.date).toLocaleDateString("fr-FR", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",

@@ -125,7 +125,7 @@ export default function Home() {
       content,
     };
 
-    const response = await fetch("/api/saveArticle", {
+    const response = await fetch("/api/database/Articles", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
