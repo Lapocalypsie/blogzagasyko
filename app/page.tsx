@@ -1,6 +1,7 @@
 // pages/index.js
 import React from "react";
 import Slider from "./components/diapo/slider";
+import LoadingPage from "./components/shared/loading";
 
 const Home = () => {
   return (
@@ -115,6 +116,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <LoadingPage />
     </section>
   );
 };
