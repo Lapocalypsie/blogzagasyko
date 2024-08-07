@@ -1,48 +1,51 @@
 //@ts-nocheck
 "use client";
-import React, { useState } from 'react';
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css'; // Import Quill styles
-import { Button } from '@/components/ui/button';
-import { authors } from '../../utils/const';
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import { Button } from "@/components/ui/button";
+import { authors } from "../../utils/const";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
-const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function Home() {
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState(authors[0]);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const [imageName, setImageName] = useState(''); // Custom name for the image
+  const [imageName, setImageName] = useState(""); // Custom name for the image
+  const { toast } = useToast();
 
   const quillModules = {
     toolbar: [
       [{ header: [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      ['link', 'image'],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
       [{ align: [] }],
       [{ color: [] }],
-      ['code-block'],
-      ['clean'],
+      ["code-block"],
+      ["clean"],
     ],
   };
 
   const quillFormats = [
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'link',
-    'image',
-    'align',
-    'color',
-    'code-block',
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+    "image",
+    "align",
+    "color",
+    "code-block",
   ];
 
   const handleEditorChange = (newContent) => {
@@ -59,16 +62,16 @@ export default function Home() {
 
   const uploadImage = async () => {
     if (!image) {
-      console.error('No image selected');
+      console.error("No image selected");
       return null;
     }
 
     const fd = new FormData();
-    fd.append('myfile', image);
-    fd.append('customName', imageName);
+    fd.append("myfile", image);
+    fd.append("customName", imageName);
 
-    const response = await fetch('/api/uploadImage', {
-      method: 'POST',
+    const response = await fetch("/api/uploadImage", {
+      method: "POST",
       body: fd,
     });
 
@@ -76,7 +79,7 @@ export default function Home() {
       const result = await response.json();
       return result.filename; // Return the filename
     } else {
-      console.error('Failed to upload the image');
+      console.error("Failed to upload the image");
       return null;
     }
   };
@@ -85,7 +88,7 @@ export default function Home() {
     const filename = await uploadImage(); // Upload the image and get the filename
 
     if (!filename) {
-      console.error('Image upload failed. Cannot publish article.');
+      console.error("Image upload failed. Cannot publish article.");
       return;
     }
 
@@ -93,24 +96,39 @@ export default function Home() {
       title,
       category,
       author: selectedAuthor,
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toISOString().split("T")[0],
       imageSrc: `/cardHeader/${filename}`, // Include image path
-      slug: title.toLowerCase().replace(/\s+/g, '-'),
+      slug: title.toLowerCase().replace(/\s+/g, "-"),
       content,
     };
 
-    const response = await fetch('/api/saveArticle', {
-      method: 'POST',
+    const response = await fetch("/api/saveArticle", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newArticle),
     });
 
     if (response.ok) {
-      console.log('Article saved successfully');
+      console.log("Article saved successfully");
+      toast({
+        variant: "success",
+        description: "Votre article a été publié avec succès.",
+      });
+      setTitle("");
+      setCategory("");
+      setContent("");
+      setImage(null);
+      setImageName("");
     } else {
-      console.error('Failed to save the article');
+      console.error("Failed to save the article");
+      return toast({
+        variant: "destructive",
+        title: "Oh non . Quelque chose s'est mal passé.",
+        description: "Il y a eu un problème avec votre demande.",
+        action: <ToastAction altText="Try again">Réessayer</ToastAction>,
+      });
     }
   };
 
@@ -170,7 +188,11 @@ export default function Home() {
             />
           </div>
           <div className="text-center mt-6">
-            <Button size="lg" onClick={handleSubmit} className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
+            <Button
+              size="lg"
+              onClick={handleSubmit}
+              className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300"
+            >
               Publier
             </Button>
           </div>
