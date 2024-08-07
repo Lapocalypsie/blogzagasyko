@@ -9,7 +9,8 @@ const nextConfig = {
       "img.freepik.com",
       "cdn.sanity.io",
       "images.prismic.io",
-      "picsum.photos"
+      "picsum.photos",
+      "1zkhiqobmbdmehh5.public.blob.vercel-storage.com"
     ],
   },
 };

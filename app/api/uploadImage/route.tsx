@@ -1,24 +1,26 @@
+import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
-import path from 'path';
-import { writeFile } from 'fs/promises';
 
-export const POST = async (req : any) => {
-  const formData = await req.formData();
-  const file = formData.get('myfile');
-  const customName = formData.get('customName'); // Custom name for the image
+export async function POST(request: Request): Promise<NextResponse> {
+  const formData = await request.formData();
+  const file = formData.get('myfile') as Blob;
+  const customName = formData.get('customName') as string;
 
   if (!file) {
     return NextResponse.json({ error: 'No files received.' }, { status: 400 });
   }
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  const filename = customName ? `${customName}${path.extname(file.name)}` : Date.now() + file.name.replaceAll(' ', '_');
+  const filename = customName ? `${customName}${file.type.split('/')[1]}` : `image-${Date.now()}.${file.type.split('/')[1]}`;
   
   try {
-    await writeFile(path.join(process.cwd(), 'public/cardHeader/' + filename), buffer);
-    return NextResponse.json({ filename, status: 201 }); // Return filename in response
+    // Store the file in Vercel Blob
+    const blob = await put(filename, file, {
+      access: 'public', // Set the access to public if you want the image to be publicly accessible
+    });
+
+    return NextResponse.json({ url: blob.url, filename }, { status: 201 });
   } catch (error) {
-    console.log('Error occurred', error);
-    return NextResponse.json({ Message: 'Failed', status: 500 });
+    console.error('Error occurred:', error);
+    return NextResponse.json({ error: 'Failed to upload image.' }, { status: 500 });
   }
-};
+}

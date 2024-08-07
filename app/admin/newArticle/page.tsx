@@ -1,8 +1,8 @@
-//@ts-nocheck 
+//@ts-nocheck
 "use client";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
 import { authors } from "../../utils/const";
 import { useToast } from "@/components/ui/use-toast";
@@ -15,8 +15,8 @@ export default function Home() {
   const [category, setCategory] = useState("");
   const [selectedAuthor, setSelectedAuthor] = useState(authors[0]);
   const [content, setContent] = useState("");
-  const [image, setImage] = useState(null);
-  const [imageName, setImageName] = useState(""); // Custom name for the image
+  const [image, setImage] = useState<File | null>(null);
+  const [imageName, setImageName] = useState("");
   const { toast } = useToast();
 
   const quillModules = {
@@ -53,7 +53,17 @@ export default function Home() {
   };
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files?.[0];
+    if (file && file.type.startsWith("image/")) {
+      setImage(file);
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Invalid file type",
+        description: "Please upload a valid image file.",
+      });
+      setImage(null);
+    }
   };
 
   const handleImageNameChange = (e) => {
@@ -62,7 +72,11 @@ export default function Home() {
 
   const uploadImage = async () => {
     if (!image) {
-      console.error("No image selected");
+      toast({
+        variant: "destructive",
+        title: "No image selected",
+        description: "Please select an image to upload.",
+      });
       return null;
     }
 
@@ -77,18 +91,27 @@ export default function Home() {
 
     if (response.ok) {
       const result = await response.json();
-      return result.filename; // Return the filename
+      return result.url; // Return the URL of the uploaded image
     } else {
-      console.error("Failed to upload the image");
+      toast({
+        variant: "destructive",
+        title: "Image upload failed",
+        description: "There was an issue uploading the image.",
+      });
       return null;
     }
   };
 
   const handleSubmit = async () => {
-    const filename = await uploadImage(); // Upload the image and get the filename
+    const imageUrl = await uploadImage(); // Upload the image and get the URL
 
-    if (!filename) {
+    if (!imageUrl) {
       console.error("Image upload failed. Cannot publish article.");
+      toast({
+        variant: "destructive",
+        title: "Image upload failed",
+        description: "There was an issue uploading the image.",
+      });
       return;
     }
 
@@ -97,7 +120,7 @@ export default function Home() {
       category,
       author: selectedAuthor,
       date: new Date().toISOString().split("T")[0],
-      imageSrc: `/cardHeader/${filename}`, // Include image path
+      imageSrc: imageUrl, // Use the URL of the uploaded image
       slug: title.toLowerCase().replace(/\s+/g, "-"),
       content,
     };
@@ -111,7 +134,6 @@ export default function Home() {
     });
 
     if (response.ok) {
-      console.log("Article saved successfully");
       toast({
         variant: "success",
         description: "Votre article a été publié avec succès.",
@@ -122,11 +144,11 @@ export default function Home() {
       setImage(null);
       setImageName("");
     } else {
-      console.error("Failed to save the article");
-      return toast({
+      toast({
         variant: "destructive",
-        title: "Oh non . Quelque chose s'est mal passé.",
-        description: "Il y a eu un problème avec votre demande.",
+        title: "Publication échouée",
+        description:
+          "Il y a eu un problème avec la publication de votre article.",
         action: <ToastAction altText="Try again">Réessayer</ToastAction>,
       });
     }
