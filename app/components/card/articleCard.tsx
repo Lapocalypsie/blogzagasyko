@@ -55,6 +55,7 @@ const ArticleCard = ({
                     layout="fill"
                     objectFit="cover"
                     loading="lazy"
+                    className="rounded-full"
                   />
                 </div>
                 <span className="truncate text-sm">{author.name}</span>

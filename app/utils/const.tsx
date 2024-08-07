@@ -1,21 +1,6 @@
 // utils/const.js
 export const articles = [
   {
-    title: "First Article",
-    category: "Tech",
-    author: {
-      name: "Author One",
-      slug: "author-one",
-      avatar:
-        "https://img.freepik.com/photos-premium/sute-girl-hacker-ordinateur-portable-avatar-style-cartoon-genere-ai_88188-3322.jpg",
-    },
-    date: "2023-08-01",
-    imageSrc:
-      "https://www.naturephotographie.com/wp-content/uploads/2018/09/www.naturephotographie.com-style-rouge.jpg",
-    slug: "first-article",
-    content: "Content of the first article",
-  },
-  {
     title: "Second Article",
     category: "Health",
     author: {
@@ -120,5 +105,21 @@ export const articles = [
     slug: "eight-article",
     content: "Content of the second article",
   },
-  // Add more articles as needed
+  
+];
+
+export const authors = [
+  {
+    name: "Norosoa Rasolosoa",
+    slug: "norosoa",
+    avatar:
+      "/people/norosoa.jpg",
+  },
+  {
+    name: "Jimmy Rasolosoa",
+    slug: "jimmy-rasolosoa",
+    avatar:
+      "/people/jimmy.png",
+  },
+  // Add more authors as needed
 ];

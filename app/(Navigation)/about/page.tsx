@@ -53,16 +53,32 @@ const Page = () => {
       </div>
       <div className="prose mx-auto mt-14 text-center dark:prose-invert">
         <p>
-          Originaire de Madagascar, notre équipe est passionnée par la promotion et la préservation de la culture malgache à travers des initiatives innovantes et engagées. Chez Za Gasy Ko, nous croyons en la puissance de la communauté et de l'héritage culturel pour inspirer et unir les gens.
+          Originaire de Madagascar, notre équipe est passionnée par la promotion
+          et la préservation de la culture malgache à travers des initiatives
+          innovantes et engagées. Chez Za Gasy Ko, nous croyons en la puissance
+          de la communauté et de l&apos;héritage culturel pour inspirer et unir
+          les gens.
         </p>
         <p>
-          Notre mission est de mettre en lumière la richesse et la diversité de Madagascar, tout en créant des opportunités pour les talents locaux de s'exprimer et de prospérer. Nous travaillons ensemble pour créer des projets qui reflètent nos valeurs de solidarité, de respect et de créativité.
+          Notre mission est de mettre en lumière la richesse et la diversité de
+          Madagascar, tout en créant des opportunités pour les talents locaux de
+          s&apos;exprimer et de prospérer. Nous travaillons ensemble pour créer
+          des projets qui reflètent nos valeurs de solidarité, de respect et de
+          créativité.
         </p>
         <p>
-          Chacun de nos membres apporte une expertise unique et une passion profonde pour notre culture et notre pays. Ensemble, nous construisons un avenir où la culture malgache brille à travers le monde.
+          Chacun de nos membres apporte une expertise unique et une passion
+          profonde pour notre culture et notre pays. Ensemble, nous construisons
+          un avenir où la culture malgache brille à travers le monde.
         </p>
         <p>
-          Merci de votre soutien et de votre intérêt pour Za Gasy Ko. Pour en savoir plus sur nos projets ou pour collaborer avec nous, n'hésitez pas à <a href="/contact" className="text-red-300">nous contacter</a>.
+          Merci de votre soutien et de votre intérêt pour Za Gasy Ko. Pour en
+          savoir plus sur nos projets ou pour collaborer avec nous,
+          n&apos;hésitez pas à{" "}
+          <a href="/contact" className="text-red-300">
+            nous contacter
+          </a>
+          .
         </p>
       </div>
     </div>

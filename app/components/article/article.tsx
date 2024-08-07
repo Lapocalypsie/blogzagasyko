@@ -1,7 +1,9 @@
+//@ts-nocheck
 import React from "react";
 import Header from "./header";
 import Image from "./image";
 import BodyArticle from "./bodyArticle";
+import { articles } from "@/app/utils/const";
 
 const ArticlesList = () => {
   return (

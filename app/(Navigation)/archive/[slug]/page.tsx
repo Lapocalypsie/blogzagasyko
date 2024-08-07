@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { articles } from "../../../utils/const";
 import Image from "next/image";
+import articles  from "@/app/utils/articles.json";
 
 const ArticlePage = ({ params }: { params: { slug: string } }) => {
   const slug = params.slug;
-  const [article, setArticle] = useState(null);
+  const [article, setArticle] = useState<any>(null); // Ensure the type is set to 'any' or a proper type definition
 
   useEffect(() => {
     const foundArticle = articles.find(
@@ -23,9 +23,7 @@ const ArticlePage = ({ params }: { params: { slug: string } }) => {
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 !pt-0">
       <div className="mx-auto max-w-screen-md ">
         <div className="flex justify-center mb-4">
-          <div className="flex justify-center mb-4">
-            <span className="text-gray-500">{article.category}</span>
-          </div>
+          <span className="text-gray-500">{article.category}</span>
         </div>
         <h1 className="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
           {article.title}
@@ -69,8 +67,11 @@ const ArticlePage = ({ params }: { params: { slug: string } }) => {
           className="rounded-lg object-cover"
         />
       </div>
-      <div className="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
-        {article.content}
+      <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
+        <div
+          className="article-content"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        />
       </div>
     </div>
   );

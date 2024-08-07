@@ -1,8 +1,9 @@
+//@ts-nocheck
 "use client";
 import React, { useState, useEffect } from "react";
 import ArticleCard from "../../components/card/articleCard";
-import { articles } from "../../utils/const";
 import Link from "next/link";
+import articles from "@/app/utils/articles.json";
 
 const Page = () => {
   // Pagination state
@@ -32,12 +33,14 @@ const Page = () => {
         Nos Projets
       </h1>
       <div className="text-center">
-        <p className="mt-2 text-lg">Découvrez tout nos actions carritatives !</p>
+        <p className="mt-2 text-lg">
+          Découvrez tout nos actions carritatives !
+        </p>
       </div>
       <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
         {/* Render ArticleCard for each article in current page */}
         {currentArticles.map((article) => (
-          <Link key={article.title} href={`/archive/${article.slug}`} passHref>
+          <Link key={article.slug} href={`/archive/${article.slug}`} passHref>
             <ArticleCard
               title={article.title}
               category={article.category}
