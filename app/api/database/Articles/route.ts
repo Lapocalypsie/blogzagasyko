@@ -2,11 +2,10 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 import { NextResponse } from "next/server";
 
 // Define the GET function to fetch articles
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-
 export async function GET() {
     const uri = process.env.MONGO_URI;
-    console.log(uri);
+
+    // Create a MongoClient with a MongoClientOptions object to set the Stable API version
     const client = new MongoClient(uri, {
         serverApi: {
             version: ServerApiVersion.v1,
@@ -42,13 +41,14 @@ export async function GET() {
     }
 }
 
-export const POST = async (request: Request) => {
+export const POST = async (request : any) => {
     const uri = process.env.MONGO_URI;
     if (!uri) {
         console.error("MONGO_URI is not defined");
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 
+    // Create a MongoClient with a MongoClientOptions object to set the Stable API version
     const client = new MongoClient(uri, {
         serverApi: {
             version: ServerApiVersion.v1,
