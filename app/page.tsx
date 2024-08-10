@@ -116,7 +116,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <LoadingPage />
     </section>
   );
 };
