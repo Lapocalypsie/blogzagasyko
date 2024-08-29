@@ -9,12 +9,13 @@ const Page = () => {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentArticles, setCurrentArticles] = useState([]);
-  const [loading, setLoading] = useState(true); // New loading state
-  const articlesPerPage = 5; // Number of articles per page
+  const [loading, setLoading] = useState(true);
+  const articlesPerPage = 5;
 
   // Fetch articles on component mount
   useEffect(() => {
     const fetchArticles = async () => {
+      setLoading(true); // Set loading to true before fetching
       try {
         const response = await fetch("/api/database/Articles", {
           method: "GET",
@@ -23,11 +24,17 @@ const Page = () => {
           },
         });
         const data = await response.json();
-        setArticles(data.data || []); // Adjust according to your API response
+
+        // Sort articles by date
+        const sortedArticles = data.data
+          ? data.data.sort((a, b) => new Date(b.date) - new Date(a.date))
+          : [];
+
+        setArticles(sortedArticles);
       } catch (error) {
         console.error("Failed to fetch articles:", error);
       } finally {
-        setLoading(false); // Set loading to false after fetching data
+        setLoading(false);
       }
     };
 
@@ -41,14 +48,9 @@ const Page = () => {
     setCurrentArticles(articles.slice(indexOfFirstArticle, indexOfLastArticle));
   }, [currentPage, articles]);
 
-  // Function to handle pagination navigation
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  const handlePreviousPage = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
+  // Handle pagination
+  const handleNextPage = () => setCurrentPage((prevPage) => prevPage + 1);
+  const handlePreviousPage = () => setCurrentPage((prevPage) => prevPage - 1);
 
   // Determine what to render
   let content;
@@ -78,7 +80,6 @@ const Page = () => {
     content = (
       <>
         <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
-          {/* Render ArticleCard for each article in current page */}
           {currentArticles.map((article) => (
             <Link key={article.slug} href={`/archive/${article.slug}`} passHref>
               <ArticleCard
@@ -88,12 +89,12 @@ const Page = () => {
                 date={article.date}
                 imageSrc={article.imageSrc}
                 slug={article.slug}
+                altText={article.title} // Adding alt text for SEO
               />
             </Link>
           ))}
         </div>
 
-        {/* Pagination buttons */}
         <div className="mt-10 flex items-center justify-center">
           <nav
             className="isolate inline-flex -space-x-px rounded-md shadow-sm"
@@ -119,7 +120,6 @@ const Page = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 aria-hidden="true"
-                data-slot="icon"
                 className="h-3 w-3"
               >
                 <path
@@ -151,7 +151,6 @@ const Page = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 aria-hidden="true"
-                data-slot="icon"
                 className="h-3 w-3"
               >
                 <path
@@ -169,12 +168,36 @@ const Page = () => {
 
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 relative">
+      <head>
+        <title>Nos Projets - Za Gasy Ko</title>
+        <meta
+          name="description"
+          content="Découvrez les projets de Za Gasy Ko, une association caritative dédiée à l'aide des habitants de Madagascar. Explorez nos actions et nos initiatives."
+        />
+        <meta
+          name="keywords"
+          content="projets, Za Gasy Ko, Madagascar, aide, association caritative"
+        />
+        <meta property="og:title" content="Nos Projets - Za Gasy Ko" />
+        <meta
+          property="og:description"
+          content="Découvrez les projets de Za Gasy Ko, une association caritative dédiée à l'aide des habitants de Madagascar."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://zagasyko.com/archive" />
+        <meta
+          property="og:image"
+          content="https://zagasyko.com/path/to/image.jpg"
+        />
+        <link rel="canonical" href="https://zagasyko.com/archive" />
+      </head>
+
       <h1 className="text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
         Nos Projets
       </h1>
       <div className="text-center">
         <p className="mt-2 text-lg">
-          Découvrez tout nos actions carritatives !
+          Découvrez toutes nos actions caritatives !
         </p>
       </div>
       {content}

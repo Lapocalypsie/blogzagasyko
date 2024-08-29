@@ -4,52 +4,47 @@ import Image from "next/image";
 const Page = () => {
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
-      <h1 className="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-        A propos de Nous
+      <h1 className="text-brand-primary mb-3 mt-2 text-center text-4xl font-bold tracking-tight dark:text-white lg:leading-snug">
+        À Propos de Nous
       </h1>
-      <div className="text-center">
-        <p className="text-lg">L&apos;équipe derrière Za Gasy Ko</p>
+      <div className="text-center mb-8">
+        <p className="text-lg font-medium">L&apos;équipe derrière Za Gasy Ko</p>
       </div>
-      <div className="mb-16 mt-6 grid grid-cols-3 gap-5 md:mb-32 md:mt-16 md:gap-16">
-        <div className="relative aspect-square overflow-hidden rounded-md bg-slate-50 odd:translate-y-10 odd:md:translate-y-16">
-          <a href="/author/jimmy-rasolosoa">
-            <Image
-              alt="Jimmy RASOLOSOA"
-              loading="lazy"
-              decoding="async"
-              src="/people/jimmy.png"
-              layout="fill"
-              objectFit="cover"
-              sizes="(max-width: 320px) 100vw, 320px"
-            />
-          </a>
-        </div>
-        <div className="relative aspect-square overflow-hidden rounded-md bg-slate-50 odd:translate-y-10 odd:md:translate-y-16">
-          <a href="/author/norosoa">
-            <Image
-              alt="Norosoa Rasolosoa"
-              loading="lazy"
-              decoding="async"
-              src="/people/norosoa.jpg"
-              layout="fill"
-              objectFit="cover"
-              sizes="(max-width: 320px) 100vw, 320px"
-            />
-          </a>
-        </div>
-        <div className="relative aspect-square overflow-hidden rounded-md bg-slate-50 odd:translate-y-10 odd:md:translate-y-16">
-          <a href="/author/jonathan">
-            <Image
-              alt="Jonathan Rasolosoa"
-              loading="lazy"
-              decoding="async"
-              src="/people/jo.jpg"
-              layout="fill"
-              objectFit="cover"
-              sizes="(max-width: 320px) 100vw, 320px"
-            />
-          </a>
-        </div>
+      <div className="mb-16 mt-6 grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-16">
+        {[
+          {
+            name: "Jimmy RASOLOSOA",
+            image: "/people/jimmy.png",
+            link: "/author/jimmy-rasolosoa",
+          },
+          {
+            name: "Norosoa Rasolosoa",
+            image: "/people/norosoa.jpg",
+            link: "/author/norosoa",
+          },
+          {
+            name: "Jonathan Rasolosoa",
+            image: "/people/jo.jpg",
+            link: "/author/jonathan",
+          },
+        ].map(({ name, image, link }, index) => (
+          <div
+            key={index}
+            className="relative aspect-square overflow-hidden rounded-md bg-slate-50 transition-transform duration-200 ease-in-out transform hover:scale-105"
+          >
+            <a href={link}>
+              <Image
+                alt={name}
+                loading="lazy"
+                decoding="async"
+                src={image}
+                layout="fill"
+                objectFit="cover"
+                sizes="(max-width: 320px) 100vw, 320px"
+              />
+            </a>
+          </div>
+        ))}
       </div>
       <div className="prose mx-auto mt-14 text-center dark:prose-invert">
         <p>
@@ -75,7 +70,10 @@ const Page = () => {
           Merci de votre soutien et de votre intérêt pour Za Gasy Ko. Pour en
           savoir plus sur nos projets ou pour collaborer avec nous,
           n&apos;hésitez pas à{" "}
-          <a href="/contact" className="text-red-300">
+          <a
+            href="/contact"
+            className="text-red-300 font-semibold hover:underline"
+          >
             nous contacter
           </a>
           .

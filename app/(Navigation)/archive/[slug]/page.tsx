@@ -64,6 +64,34 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ params }) => {
 
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 !pt-0">
+      <head>
+        <title>{article.title} - Za Gasy Ko</title>
+        <meta
+          name="description"
+          content={`${article.title} - ${article.category}. Écrit par ${article.author.name}.`}
+        />
+        <meta
+          name="keywords"
+          content={`${article.title}, ${article.category}, Za Gasy Ko`}
+        />
+        <meta property="og:title" content={article.title} />
+        <meta
+          property="og:description"
+          content={`${article.title} - ${article.category}. Écrit par ${article.author.name}.`}
+        />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:url"
+          content={`https://yourwebsite.com/archive/${article.slug}`}
+        />
+        <meta property="og:image" content={article.imageSrc} />
+        <meta property="article:published_time" content={article.date} />
+        <link
+          rel="canonical"
+          href={`https://yourwebsite.com/archive/${article.slug}`}
+        />
+      </head>
+
       <div className="mx-auto max-w-screen-md">
         <div className="flex justify-center mb-4">
           <span className="text-gray-500">{article.category}</span>
@@ -103,7 +131,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ params }) => {
       <div className="relative mt-6 z-0 mx-auto aspect-video max-w-screen-lg overflow-hidden lg:rounded-lg">
         <Image
           src={article.imageSrc}
-          alt={article.title}
+          alt={article.title} // Descriptive alt text for the image
           layout="responsive"
           width={16}
           height={9}

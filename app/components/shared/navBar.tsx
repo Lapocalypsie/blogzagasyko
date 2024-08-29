@@ -6,135 +6,144 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev); // Toggle state
   };
 
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
-      <nav>
-        <div className="flex flex-wrap items-center justify-between md:justify-between md:gap-10">
-          {/* Liens de navigation et logo pour le bureau */}
-          <div className="hidden md:flex md:items-center md:gap-4">
-            <a
-              className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/"
-            >
-              Accueil
-            </a>
-            <a
-              className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/about"
-            >
-              À propos
-            </a>
-            <a
-              className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/contact"
-            >
-              Contact
-            </a>
-          </div>
+      <nav className="flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center justify-start">
+          <a href="/" className="flex items-center">
+            <Image
+              alt="Logo"
+              src="/Logo.svg"
+              width={120}
+              height={60}
+              className="object-contain"
+            />
+          </a>
+        </div>
 
-          {/* Logo - doit être à gauche lorsqu'il est activé */}
-          <div className="flex items-center justify-center flex-grow">
-            <a href="/" className="flex items-center justify-center">
-              <Image
-                alt="Logo"
-                src="/Logo.svg"
-                width={200} // Adjust the width as needed
-                height={100} // Adjust the height as needed
-                className="object-contain" // Ensures the image maintains its aspect ratio
-              />
-            </a>
-          </div>
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex items-center space-x-6">
+          <a
+            className="text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/"
+          >
+            Accueil
+          </a>
+          <a
+            className="text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/about"
+          >
+            À propos
+          </a>
+          <a
+            className="text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/contact"
+          >
+            Contact
+          </a>
+          <a
+            className="text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/archive"
+          >
+            Nos projets
+          </a>
+          <a
+            className="text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/gallery"
+          >
+            Gallery
+          </a>
+          <a
+            className="text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="/donation"
+          >
+            Faire un don
+          </a>
+        </div>
 
-          {/* Liens de navigation supplémentaires et bascule du menu mobile */}
-          <div className="hidden md:flex md:items-center md:gap-4">
-            <a
-              className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/archive"
-            >
-              Nos projets
-            </a>
-            <a
-              className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/gallery"
-            >
-              Gallery
-            </a>
-            <a
-              className="px-5 py-2 text-sm font-medium text-black hover:text-blue-500 dark:text-gray-400 border border-blue-500 rounded-md bg-red-200" 
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://zanakagasykoloina.blogspot.com/2021/04/cagnotte-en-cours.html"
-            >
-              Faire un don
-            </a>
-          </div>
-
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
           <button
-            aria-label="Basculer le menu"
-            className="ml-auto rounded-md px-2 py-1 text-gray-500 focus:text-blue-500 focus:outline-none dark:text-gray-300 md:hidden"
+            aria-label="Toggle Menu"
+            className="text-gray-600 hover:text-blue-500 focus:outline-none"
             onClick={toggleMenu}
           >
             <svg
-              className="h-6 w-6 fill-current"
-              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-              ></path>
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              )}
             </svg>
           </button>
         </div>
-
-        {/* Liens de navigation mobile */}
-        {isOpen && (
-          <div className="md:hidden flex flex-col mt-4">
-            <a
-              className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/"
-            >
-              Accueil
-            </a>
-            <a
-              className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/about"
-            >
-              À propos
-            </a>
-            <a
-              className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/contact"
-            >
-              Contact
-            </a>
-            <a
-              className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/archive"
-            >
-              Archive
-            </a>
-            <a
-              className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              href="/gallery"
-            >
-              Galery
-            </a>
-            <a
-              className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://zanakagasykoloina.blogspot.com/2021/04/cagnotte-en-cours.html"
-            >
-              Faire un don
-            </a>
-          </div>
-        )}
       </nav>
+
+      {/* Mobile Navigation Links */}
+      {isOpen && (
+        <div className="md:hidden mt-4 flex flex-col space-y-2">
+          <a
+            className="block text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/"
+          >
+            Accueil
+          </a>
+          <a
+            className="block text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/about"
+          >
+            À propos
+          </a>
+          <a
+            className="block text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/contact"
+          >
+            Contact
+          </a>
+          <a
+            className="block text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/archive"
+          >
+            Nos projets
+          </a>
+          <a
+            className="block text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+            href="/gallery"
+          >
+            Gallery
+          </a>
+          <a
+            className="block text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="/donation"
+          >
+            Faire un don
+          </a>
+        </div>
+      )}
     </div>
   );
 };
