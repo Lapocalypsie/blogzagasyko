@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
-import { authors } from "../../utils/const";
+import { authors } from "../../../utils/const";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 
@@ -17,6 +17,7 @@ export default function Home() {
   const [content, setContent] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imageName, setImageName] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Track loading state
   const { toast } = useToast();
 
   const quillModules = {
@@ -102,16 +103,23 @@ export default function Home() {
     }
   };
 
+  const generateSlug = (str: string) => {
+    return str
+      .normalize("NFD") // Normalize the string
+      .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove invalid characters
+      .trim() // Trim whitespace
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  };
+
   const handleSubmit = async () => {
+    setIsLoading(true); // Start loading
     const imageUrl = await uploadImage(); // Upload the image and get the URL
 
     if (!imageUrl) {
       console.error("Image upload failed. Cannot publish article.");
-      toast({
-        variant: "destructive",
-        title: "Image upload failed",
-        description: "There was an issue uploading the image.",
-      });
+      setIsLoading(false); // Stop loading
       return;
     }
 
@@ -121,7 +129,7 @@ export default function Home() {
       author: selectedAuthor,
       date: new Date().toISOString().split("T")[0],
       imageSrc: imageUrl, // Use the URL of the uploaded image
-      slug: title.toLowerCase().replace(/\s+/g, "-"),
+      slug: generateSlug(title),
       content,
     };
 
@@ -132,6 +140,8 @@ export default function Home() {
       },
       body: JSON.stringify(newArticle),
     });
+
+    setIsLoading(false); // Stop loading
 
     if (response.ok) {
       toast({
@@ -165,6 +175,7 @@ export default function Home() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
+            required
           />
           <input
             type="text"
@@ -172,15 +183,18 @@ export default function Home() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
+            required
           />
           <select
             value={selectedAuthor.slug}
             onChange={(e) =>
               setSelectedAuthor(
-                authors.find((author) => author.slug === e.target.value)
+                authors.find((author) => author.slug === e.target.value) ||
+                  authors[0]
               )
             }
             className="w-full border border-gray-300 p-2 rounded"
+            required
           >
             {authors.map((author) => (
               <option key={author.slug} value={author.slug}>
@@ -194,28 +208,39 @@ export default function Home() {
             value={imageName}
             onChange={handleImageNameChange}
             className="w-full border border-gray-300 p-2 rounded"
+            required
           />
           <input
             type="file"
             onChange={handleImageChange}
             className="w-full border border-gray-300 p-2 rounded"
+            required
           />
-          <div className="flex-grow">
+
+          <div className="flex-grow mt-4">
+            {" "}
+            {/* Ensure this div wraps the QuillEditor */}
             <QuillEditor
               value={content}
               onChange={handleEditorChange}
               modules={quillModules}
               formats={quillFormats}
-              className="w-full h-[70vh] mt-2 bg-white"
+              className="min-h-[200px] border border-gray-300 rounded"
             />
           </div>
+
           <div className="text-center mt-6">
+            {" "}
+            {/* This div contains the button */}
             <Button
               size="lg"
               onClick={handleSubmit}
-              className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300"
+              className={`bg-blue-600 text-white hover:bg-blue-700 transition duration-300 ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`} // Disable button when loading
+              disabled={isLoading} // Disable button during submission
             >
-              Publier
+              {isLoading ? "Publishing..." : "Publier"}
             </Button>
           </div>
         </div>

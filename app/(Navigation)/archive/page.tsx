@@ -1,38 +1,49 @@
-//@ts-nocheck
-"use client";
+"use client"; // Keep this if the component needs to run client-side
+
 import React, { useState, useEffect } from "react";
-import ArticleCard from "../../components/card/articleCard";
 import Link from "next/link";
+import Head from "next/head";
+import ArticleCard from "@/app/components/card/articleCard";
+
+interface Article {
+  title: string;
+  category: string;
+  author: Author;
+  date: string;
+  imageSrc: string;
+  slug: string;
+}
+
+interface Author {
+  name: string;
+  avatar: string;
+}
 
 const Page = () => {
-  // State for articles, pagination, and loading
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentArticles, setCurrentArticles] = useState([]);
+  const [currentArticles, setCurrentArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
   const articlesPerPage = 5;
 
-  // Fetch articles on component mount
   useEffect(() => {
     const fetchArticles = async () => {
-      setLoading(true); // Set loading to true before fetching
+      setLoading(true);
       try {
-        const response = await fetch("/api/database/Articles", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch("/api/database/Articles");
+        if (!response.ok) throw new Error("Failed to fetch articles");
+
         const data = await response.json();
-
-        // Sort articles by date
         const sortedArticles = data.data
-          ? data.data.sort((a, b) => new Date(b.date) - new Date(a.date))
+          ? data.data.sort(
+              (a: any, b: any) =>
+                (new Date(b.date) as any) - (new Date(a.date) as any)
+            )
           : [];
-
         setArticles(sortedArticles);
       } catch (error) {
         console.error("Failed to fetch articles:", error);
+        setArticles([]);
       } finally {
         setLoading(false);
       }
@@ -41,26 +52,23 @@ const Page = () => {
     fetchArticles();
   }, []);
 
-  // Update current articles based on pagination
   useEffect(() => {
     const indexOfLastArticle = currentPage * articlesPerPage;
     const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
     setCurrentArticles(articles.slice(indexOfFirstArticle, indexOfLastArticle));
   }, [currentPage, articles]);
 
-  // Handle pagination
-  const handleNextPage = () => setCurrentPage((prevPage) => prevPage + 1);
-  const handlePreviousPage = () => setCurrentPage((prevPage) => prevPage - 1);
+  const handleNextPage = () => setCurrentPage((prev) => prev + 1);
+  const handlePreviousPage = () => setCurrentPage((prev) => prev - 1);
 
-  // Determine what to render
   let content;
+
   if (loading) {
     content = (
-      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <div className="flex flex-col items-center space-y-4">
             <div className="relative w-24 h-24">
-              <div className="absolute top-0 left-0 w-full h-full border-8 border-gray-200 rounded-full"></div>
               <div className="absolute top-0 left-0 w-full h-full border-8 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
             </div>
             <p className="text-xl font-semibold text-gray-700">Chargement...</p>
@@ -89,7 +97,7 @@ const Page = () => {
                 date={article.date}
                 imageSrc={article.imageSrc}
                 slug={article.slug}
-                altText={article.title} // Adding alt text for SEO
+                altText={article.title} // Alt text for SEO and accessibility
               />
             </Link>
           ))}
@@ -107,11 +115,7 @@ const Page = () => {
                 currentPage === 1
                   ? "text-gray-500 hover:bg-gray-50"
                   : "text-blue-600 hover:bg-blue-50"
-              } focus:z-20 ${
-                currentPage === 1
-                  ? "disabled:pointer-events-none disabled:opacity-40"
-                  : ""
-              } dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300`}
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +123,6 @@ const Page = () => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                aria-hidden="true"
                 className="h-3 w-3"
               >
                 <path
@@ -137,11 +140,7 @@ const Page = () => {
                 currentArticles.length < articlesPerPage
                   ? "text-gray-500 hover:bg-gray-50"
                   : "text-blue-600 hover:bg-blue-50"
-              } focus:z-20 ${
-                currentArticles.length < articlesPerPage
-                  ? "disabled:pointer-events-none disabled:opacity-40"
-                  : ""
-              } dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300`}
+              }`}
             >
               <span>Suivant</span>
               <svg
@@ -150,7 +149,6 @@ const Page = () => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                aria-hidden="true"
                 className="h-3 w-3"
               >
                 <path
@@ -168,11 +166,11 @@ const Page = () => {
 
   return (
     <div className="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 relative">
-      <head>
+      <Head>
         <title>Nos Projets - Za Gasy Ko</title>
         <meta
           name="description"
-          content="Découvrez les projets de Za Gasy Ko, une association caritative dédiée à l'aide des habitants de Madagascar. Explorez nos actions et nos initiatives."
+          content="Découvrez les projets de Za Gasy Ko, une association caritative dédiée à l'aide des habitants de Madagascar."
         />
         <meta
           name="keywords"
@@ -185,12 +183,9 @@ const Page = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://zagasyko.com/archive" />
-        <meta
-          property="og:image"
-          content="https://zagasyko.com/path/to/image.jpg"
-        />
+        <meta property="og:image" content="/Logo.svg" />{" "}
         <link rel="canonical" href="https://zagasyko.com/archive" />
-      </head>
+      </Head>
 
       <h1 className="text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
         Nos Projets

@@ -31,14 +31,14 @@ const ArticleCard = ({
       </div>
       <div>
         <div className="flex gap-3">
-          <Link href={`/${category}`}>
+          <Link href={`/category/${category}`}>
             <span className="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-blue-600">
               {category}
             </span>
           </Link>
         </div>
         <h2 className="text-lg font-semibold leading-snug tracking-tight mt-2 dark:text-white">
-          <Link href={`/articles/${slug}`}>
+          <Link href={`/archive/${slug}`}>
             <span className="bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-purple-800 dark:to-purple-900">
               {title}
             </span>
@@ -46,23 +46,21 @@ const ArticleCard = ({
         </h2>
         <div className="mt-3 flex items-center space-x-3 text-gray-500 dark:text-gray-400">
           {author ? (
-            <Link href={`/author/${author.slug}`}>
-              <div className="flex items-center gap-3">
-                <div className="relative h-5 w-5 flex-shrink-0">
-                  <Image
-                    alt={author.name}
-                    src={author.avatar}
-                    layout="fill"
-                    objectFit="cover"
-                    loading="lazy"
-                    className="rounded-full"
-                  />
-                </div>
-                <span className="truncate text-sm">{author.name}</span>
+            <div className="flex items-center gap-3">
+              <div className="relative h-5 w-5 flex-shrink-0">
+                <Image
+                  alt={author.name}
+                  src={author.avatar}
+                  layout="fill"
+                  objectFit="cover"
+                  loading="lazy"
+                  className="rounded-full"
+                />
               </div>
-            </Link>
+              <span className="truncate text-sm">{author.name}</span>
+            </div>
           ) : (
-            <p>No author information available</p>
+            <p>Pas d&apos;information sur l&apos;auteur</p>
           )}
           <span className="text-xs text-gray-300 dark:text-gray-600">•</span>
           <time className="truncate text-sm" dateTime={date}>

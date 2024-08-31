@@ -1,4 +1,3 @@
-// app/layout.js (or wherever your RootLayout is defined)
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,10 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Za Gasy Ko | Association Caritative",
     description: "Apportant de l'aide et du soutien aux enfants de Madagascar.",
-    url: "https://www.zagasyko.org", // Update with your site's URL
+    url: "https://www.zagasyko.com", // Update with your site's URL
     images: "/Logo.svg", // Path to your logo
     siteName: "Za Gasy Ko",
   },
+  metadataBase: new URL("https://www.zagasyko.com"), // Add this line
 };
 
 export default function RootLayout({
@@ -37,7 +37,7 @@ export default function RootLayout({
         <head>
           <link rel="icon" href="/Logo.svg" type="image/svg+xml" />{" "}
           {/* Add favicon */}
-          <meta name="robots" content="index, follow" />{" "}
+          <meta name="robots" content="index, follow" />
           {/* Allow search engines to index the page */}
         </head>
         <body className={inter.className}>

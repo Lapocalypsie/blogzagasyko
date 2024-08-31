@@ -82,13 +82,13 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ params }) => {
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
-          content={`https://yourwebsite.com/archive/${article.slug}`}
+          content={`https://zagasyko.com/archive/${article.slug}`}
         />
         <meta property="og:image" content={article.imageSrc} />
         <meta property="article:published_time" content={article.date} />
         <link
           rel="canonical"
-          href={`https://yourwebsite.com/archive/${article.slug}`}
+          href={`https://zagasyko.com/archive/${article.slug}`}
         />
       </head>
 
