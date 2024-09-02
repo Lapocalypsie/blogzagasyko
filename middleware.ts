@@ -1,6 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-
 export const config = {
     matcher: [
         // Skip Next.js internals and all static files, unless found in search params
@@ -15,5 +14,11 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware((auth, req) => {
-    if (isProtectedRoute(req)) auth().protect();
+    if (isProtectedRoute(req)) {
+        auth().protect();
+    } else {
+        // Set the x-robots-tag header to allow indexing on public routes
+        const headers: Headers = req.headers;
+        headers.set('x-robots-tag', 'index, follow');
+    }
 });
