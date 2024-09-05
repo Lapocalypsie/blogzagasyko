@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "./components/shared/navBar";
 import Footer from "./components/shared/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,7 +42,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div>
           <NavBar />
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
           <Toaster />
           <Footer />
         </div>
