@@ -30,7 +30,7 @@ export default function SuccessPage() {
   if (loading) return <div>Loading...</div>;
 
   if (!sessionDetails) return <div>Session not found</div>;
-  console.log(sessionDetails);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-teal-100 to-blue-200 p-4">
       <div className="max-w-lg w-full bg-white p-8 rounded-xl shadow-lg">
