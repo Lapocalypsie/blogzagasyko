@@ -115,3 +115,46 @@ export const allImages = [
     text: "to be added",
   },
 ];
+
+export const teamMembers = [
+  {
+    name: "Jimmy RASOLOSOA",
+    image: "/people/jimmy.png",
+    role: "Vice trésorier",
+    description:
+      "Passionné par l'entrepreneuriat et le développement durable à Madagascar.",
+  },
+  {
+    name: "Norosoa Rasolosoa",
+    image: "/people/norosoa.jpg",
+    role: "Présidente de l'Association",
+    description:
+      "Engagée pour l'éducation et l'égalité des chances à Madagascar.",
+  },
+  {
+    name: "Tantely DODO",
+    image: "/people/tantely.jpg",
+    role: "Trésorier",
+    description:
+      "Passionné par la culture malgache et la promotion de l'artisanat local.",
+  },
+  {
+    name: "Tiphaine RASOLOSOA",
+    image: "/people/tiphaine.jpg",
+    role: "Secrétaire",
+    description:
+      "Engagée pour la promotion de la culture malgache et la solidarité.",
+  },
+];
+
+export const images = [
+  "/madaLandscape/Berenty.jpg",
+  "/madaLandscape/chute-de-Lily-a-Ampefy.jpeg",
+  "/madaLandscape/majunga-baobab.jpg",
+  "/madaLandscape/Morondava Baobab.jpg",
+  "/madaLandscape/Nosy-Be-.jpg",
+  "/madaLandscape/Sainte Marie (1).jpg",
+  "/madaLandscape/Sainte Marie.jpg",
+  "/madaLandscape/sary colier 1.jpg",
+  "/madaLandscape/Tsingy - Copy.jpg",
+];

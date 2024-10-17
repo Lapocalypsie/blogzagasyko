@@ -9,8 +9,8 @@ export default function Page() {
         </h1>
         <div className="text-center text-gray-600">
           <p className="mb-4">
-            Désolé, l&apos;inscription à Za Gasy Ko n&apos;est disponible que pour les
-            administrateurs du site à présent.
+            Désolé, l&apos;inscription à Za Gasy Ko n&apos;est disponible que
+            pour les administrateurs du site à présent.
           </p>
           <p className="mb-6">
             Si vous êtes administrateur, veuillez contacter :

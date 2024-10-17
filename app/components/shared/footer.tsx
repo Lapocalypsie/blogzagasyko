@@ -15,12 +15,12 @@ const Footer = () => {
         <span className="mx-2">·</span>
         <span>
           <a
-            href="https://github.com/Lapocalypsie"
+            href="https://jimmy-rasolosoa.vercel.app/"
             rel="noopener noreferrer"
             target="_blank"
             className="hover:text-blue-500 transition-colors"
           >
-            GitHub
+            Visiter
           </a>
         </span>
       </div>

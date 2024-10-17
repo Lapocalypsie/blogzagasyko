@@ -4,37 +4,7 @@ import Head from "next/head"; // Importer le composant Head de Next.js
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const teamMembers = [
-  {
-    name: "Jimmy RASOLOSOA",
-    image: "/people/jimmy.png",
-    role: "Vice trésorier",
-    description:
-      "Passionné par l'entrepreneuriat et le développement durable à Madagascar.",
-  },
-  {
-    name: "Norosoa Rasolosoa",
-    image: "/people/norosoa.jpg",
-    role: "Présidente de l'Association",
-    description:
-      "Engagée pour l'éducation et l'égalité des chances à Madagascar.",
-  },
-  {
-    name: "Tantely DODO",
-    image: "/people/tantely.jpg",
-    role: "Trésorier",
-    description:
-      "Passionné par la culture malgache et la promotion de l'artisanat local.",
-  },
-  {
-    name: "Tiphaine RASOLOSOA",
-    image: "/people/tiphaine.jpg",
-    role: "Secrétaire",
-    description:
-      "Engagée pour la promotion de la culture malgache et la solidarité.",
-  },
-];
+import { teamMembers } from "../../utils/const";
 
 const Page = () => {
   const [selectedMember, setSelectedMember] = useState<null | {

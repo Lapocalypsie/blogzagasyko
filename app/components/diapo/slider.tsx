@@ -8,18 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
-
-const images = [
-  "/madaLandscape/Berenty.jpg",
-  "/madaLandscape/chute-de-Lily-a-Ampefy.jpeg",
-  "/madaLandscape/majunga-baobab.jpg",
-  "/madaLandscape/Morondava Baobab.jpg",
-  "/madaLandscape/Nosy-Be-.jpg",
-  "/madaLandscape/Sainte Marie (1).jpg",
-  "/madaLandscape/Sainte Marie.jpg",
-  "/madaLandscape/sary colier 1.jpg",
-  "/madaLandscape/Tsingy - Copy.jpg",
-];
+import { images } from "@/app/utils/const";
 
 const Slider = () => {
   return (
@@ -38,7 +27,10 @@ const Slider = () => {
             style={{ flex: "0 0 300px" }} // Fixed width for each item
           >
             <Card>
-              <CardContent className="relative p-0" style={{ width: "300px", height: "300px" }}>
+              <CardContent
+                className="relative p-0"
+                style={{ width: "300px", height: "300px" }}
+              >
                 <Image
                   src={image}
                   alt={`Landscape ${index + 1}`}

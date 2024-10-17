@@ -2,15 +2,61 @@
 import React from "react";
 import Head from "next/head";
 import { toast } from "@/components/ui/use-toast";
+import { sendEmail } from "@/app/api/sendEmail/route";
 
 const Page = () => {
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    toast({
-      variant: "destructive",
-      title: "Message non envoyé",
-      description:
-        "Le formulaire de contact est actuellement désactivé, contactez-nous via notre email.",
-    });
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [message, setMessage] = React.useState("");
+
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log(name, email, message);
+
+    const data = { name, email, message };
+
+    try {
+      const result = await sendEmail(data);
+      if (!result.success) {
+        toast({
+          variant: "destructive",
+          title: "Message non envoyé",
+          description:
+            "Le formulaire de contact est actuellement désactivé, contactez-nous via notre email.",
+        });
+      } else {
+        toast({
+          variant: "success",
+          title: "Message bien envoyé",
+          description:
+            "Votre message a bien été envoyé, nous vous répondrons dans les plus brefs délais.",
+        });
+        // Reset the form after handling the result
+        setName("");
+        setEmail("");
+        setMessage("");
+      }
+    } catch (error) {
+      console.error("Error sending email: ", error);
+      toast({
+        variant: "destructive",
+        title: "Message non envoyé",
+        description:
+          "Le formulaire de contact est actuellement désactivé, contactez-nous via notre email.",
+      });
+    }
   };
 
   return (
@@ -91,26 +137,11 @@ const Page = () => {
                     d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
                   ></path>
                 </svg>
-                <a href="mailto:zagasyko@gmail.com">zagasyko@gmail.com</a>
+                <a href="mailto:zagasyko@gmail.com">
+                  zanakagasykoloina@gmail.com
+                </a>
               </div>
-              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                  className="w-4 h-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-                  ></path>
-                </svg>
-                <a href="tel:+33 7 49 93 82 25">+33 7 49 93 82 25</a>
-              </div>
+              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400"></div>
             </div>
           </div>
           <div>
@@ -124,10 +155,12 @@ const Page = () => {
               <div className="mb-5">
                 <input
                   type="text"
-                  placeholder="Nom - Prénom"
+                  placeholder="Votre nom et prénom"
                   autoComplete="off"
                   className="w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
                   name="name"
+                  value={name}
+                  onChange={handleName}
                 />
               </div>
               <div className="mb-5">
@@ -141,13 +174,18 @@ const Page = () => {
                   autoComplete="off"
                   className="w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
                   name="email"
+                  value={email}
+                  onChange={handleEmail}
                 />
               </div>
               <div className="mb-3">
                 <textarea
                   name="message"
                   placeholder="Votre message"
+                  value={message}
                   className="w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white dark:placeholder:text-gray-200 dark:bg-gray-900 rounded-md outline-none h-36 focus:ring-4 border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
+                  //@ts-ignore
+                  onChange={handleMessage}
                 />
               </div>
               <button
