@@ -2,7 +2,7 @@
 import React from "react";
 import Head from "next/head";
 import { toast } from "@/components/ui/use-toast";
-import { sendEmail } from "@/app/api/sendEmail/route";
+import { sendEmail } from "@/app/components/server/sendEmail";
 
 const Page = () => {
   const [name, setName] = React.useState("");
