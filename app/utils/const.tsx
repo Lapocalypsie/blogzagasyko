@@ -1,3 +1,5 @@
+import test from "node:test";
+
 // utils/const.js
 export const authors = [
   {
@@ -144,6 +146,33 @@ export const teamMembers = [
     role: "Secrétaire",
     description:
       "Engagée pour la promotion de la culture malgache et la solidarité.",
+  },
+];
+
+export const volunteerMembers = [
+  {
+    name: "Domoina et Andry",
+    image: "/people/domoina_andry.jpeg",
+    testimony:
+      "Nous sommes très heureux de pouvoir contribuer à la mission de Za Gasy Ko et de soutenir les actions de l'association.",
+  },
+  {
+    name: "Edwige",
+    image: "/people/edwige.jpeg",
+    testimony:
+      "Ny antony anampiako Olona dia tiko izy ireo mba hitovy aminy rehetra,tiko izy ireo mba hahanana fiezana sy hitombo fahalalana.",
+  },
+  {
+    name: "Prisca et Roger",
+    image: "/people/prisca_roger.jpeg",
+    testimony:
+      "Nous sommes fiers de faire partie de l'équipe de Za Gasy Ko et de contribuer à la promotion de la culture malgache.",
+  },
+  {
+    name: "Keithy",
+    image: "/people/keithy.jpg",
+    testimony:
+      "Je suis reconnaissante de pouvoir participer à cette oeuvre de charité qui consiste à aider les enfants en difficulté financière à avoir accès à l'éducation. Mon plus grand bonheur est l'espoir qu'ils réussissent dans la vie. Je remercie infiniment l'association pour son soutien pour pousser ces enfants vers la réussite",
   },
 ];
 
