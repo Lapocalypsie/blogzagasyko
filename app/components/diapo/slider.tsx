@@ -23,13 +23,13 @@ const Slider = () => {
         {images.map((image, index) => (
           <CarouselItem
             key={index}
-            className="m-8"
-            style={{ flex: "0 0 300px" }} // Fixed width for each item
+            className="m-4 sm:m-8"
+            style={{ flex: "0 0 80%", maxWidth: "300px" }} // Responsive width
           >
             <Card>
               <CardContent
                 className="relative p-0"
-                style={{ width: "300px", height: "300px" }}
+                style={{ width: "100%", height: "300px" }}
               >
                 <Image
                   src={image}
@@ -41,9 +41,7 @@ const Slider = () => {
               </CardContent>
             </Card>
             <div>
-              <h2 className="text-center text-lg font-semibold mt-4 text-amber-700">
-                {image.replace("/madaLandscape/", "").replace(".jpg", "")}
-              </h2>
+       
             </div>
           </CarouselItem>
         ))}

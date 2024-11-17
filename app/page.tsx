@@ -8,8 +8,9 @@ const Home = () => {
       <div
         className="relative px-4 py-16 md:py-32 lg:py-48 bg-cover bg-center"
         style={{
-          backgroundImage: `url('https://images.prismic.io/zagasyko/06bb181d-7a33-48b1-be1b-dcb782fe0174_malgacheEnfants.JPG?auto=compress%2Cformat&fit=max&w=1920')`,
+          backgroundImage: `url('/banner.jpeg')`,
         }}
+        
       >
         {/* Overlay */}
         <div
@@ -57,8 +58,7 @@ const Home = () => {
             Comment agir ?
           </h1>
           <p className="mb-4 text-base md:text-lg text-justify">
-            Nous travaillons avec des bénévoles sur places. Des bénévoles qui
-            ont les mêmes principes que nous. Des personnes qui offrent
+            Nous travaillons avec des bénévoles sur places. Des personnes qui offrent
             gratuitement leurs services ; qui font les tâches avec amour ; qui
             sont nos représentantes sur place ; qui ont la joie de servir leurs
             semblables et intègres, quelque soit leurs situations.
@@ -97,7 +97,7 @@ const Home = () => {
           </p>
           <div className="items-center mt-10">
             <h1 className="font-semibold leading-tight tracking-tight text-3xl md:text-4xl mb-4 mt-8">
-              Quelques photos de Madagascar
+              Quelques photos de nos actions
             </h1>
             <div className="items-center mx-4 md:mx-12">
               <div className="flex justify-center ">

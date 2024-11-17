@@ -177,13 +177,9 @@ export const volunteerMembers = [
 ];
 
 export const images = [
-  "/madaLandscape/Berenty.jpg",
-  "/madaLandscape/chute-de-Lily-a-Ampefy.jpeg",
-  "/madaLandscape/majunga-baobab.jpg",
-  "/madaLandscape/Morondava Baobab.jpg",
-  "/madaLandscape/Nosy-Be-.jpg",
-  "/madaLandscape/Sainte Marie (1).jpg",
-  "/madaLandscape/Sainte Marie.jpg",
-  "/madaLandscape/sary colier 1.jpg",
-  "/madaLandscape/Tsingy - Copy.jpg",
+  "/actions/fourniture.jpeg",
+  "/actions/furniture given.jpeg",
+  "/actions/merci.jpg",
+  "/actions/nouriture.jpeg",
+  "/actions/prisca_oil.jpeg",
 ];
