@@ -25,7 +25,7 @@ const Home = () => {
                 Za Gasy Ko
               </h2>
               <p className="mb-4 text-base md:text-lg">
-                Za Gasy Ko est une association à caractère caritatif qui vise à
+                Za Gasy Ko est une association à caractère caritative qui vise à
                 aider les Malgaches, en particulier les enfants malgaches en
                 situation de sévère pauvreté.
               </p>
