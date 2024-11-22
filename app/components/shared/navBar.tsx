@@ -130,7 +130,7 @@ const NavBar = () => {
           </a>
           <a
             className="block text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-            href="/gallery"
+            href="https://zagasykogallerie.vercel.app/"
           >
             Gallery
           </a>
