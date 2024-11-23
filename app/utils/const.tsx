@@ -157,10 +157,10 @@ export const volunteerMembers = [
       "Nous sommes très heureux de pouvoir contribuer à la mission de Za Gasy Ko et de soutenir les actions de l'association.",
   },
   {
-    name: "Edwige",
-    image: "/people/edwige.jpeg",
+    name: "Auguste",
+    image: "/people/auguste.jpeg",
     testimony:
-      "Ny antony anampiako Olona dia tiko izy ireo mba hitovy aminy rehetra,tiko izy ireo mba hahanana fiezana sy hitombo fahalalana.",
+      "La raison pour laquelle j'aide les gens est que je veux qu'ils soient égaux à tous, je veux qu'ils fassent des efforts et grandissent en connaissances.",
   },
   {
     name: "Prisca et Roger",
@@ -174,6 +174,12 @@ export const volunteerMembers = [
     testimony:
       "Je suis reconnaissante de pouvoir participer à cette oeuvre de charité qui consiste à aider les enfants en difficulté financière à avoir accès à l'éducation. Mon plus grand bonheur est l'espoir qu'ils réussissent dans la vie. Je remercie infiniment l'association pour son soutien pour pousser ces enfants vers la réussite",
   },
+  {
+    name: "Edwige",
+    image: "/people/edwige.jpeg",
+    testimony:
+      "En août 2009, lors d'une visite à Vohitrafeno, mon mari a croisé une jeune collégienne qui vendait des boules de manioc râpée pour acheter des cahiers. Ce moment nous a inspirés à aider. Conscients des difficultés des familles rurales, nous avons décidé de donner des fournitures scolaires chaque année pour alléger leur charge et offrir un avenir meilleur aux enfants.",
+  },
 ];
 
 export const images = [
@@ -182,4 +188,5 @@ export const images = [
   "/actions/merci.jpg",
   "/actions/nouriture.jpeg",
   "/actions/prisca_oil.jpeg",
+  "/actions/covid.jpeg",
 ];
