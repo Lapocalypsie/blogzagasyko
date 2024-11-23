@@ -10,7 +10,6 @@ const Home = () => {
         style={{
           backgroundImage: `url('/banner.jpeg')`,
         }}
-        
       >
         {/* Overlay */}
         <div
@@ -41,60 +40,64 @@ const Home = () => {
       </div>
       <section className="px-4 py-12 md:py-16 lg:py-20 bg-white text-black leading-relaxed">
         <div className="mx-auto w-full max-w-6xl">
-          <h1 className="font-semibold leading-tight tracking-tight text-3xl md:text-4xl mb-4">
-            Quel est notre but ?
-          </h1>
-          <p className="mb-4 text-base md:text-lg text-justify">
-            Comme d&apos;autres associations humanitaires, nous voulons juste
-            <span className="font-bold text-red-300">
-              {" "}
-              apporter un peu d&apos;aide{" "}
-            </span>{" "}
-            à Madagascar ! Lorsqu&apos;on a été témoin d&apos;une grande
-            pauvreté, on ne peut pas faire semblant de n&apos;avoir rien vu. La
-            suite dépend des moyens !
-          </p>
-          <h1 className="font-semibold leading-tight tracking-tight text-3xl md:text-4xl mb-4 mt-10">
-            Comment agir ?
-          </h1>
-          <p className="mb-4 text-base md:text-lg text-justify">
-            Nous travaillons avec des bénévoles sur places. Des personnes qui offrent
-            gratuitement leurs services ; qui font les tâches avec amour ; qui
-            sont nos représentantes sur place ; qui ont la joie de servir leurs
-            semblables et intègres, quelque soit leurs situations.
-          </p>
-          <p className="mb-4 text-base md:text-lg text-justify">
-            L&apos;éducation occupe une place centrale dans la mission de Za
-            Gasy Ko. L&apos;association s&apos;emploie à offrir aux enfants
-            malgaches la possibilité d&apos;apprendre et de grandir dans un
-            environnement éducatif favorable. Des programmes éducatifs novateurs
-            sont mis en place pour stimuler la curiosité intellectuelle et
-            encourager le développement des compétences.
-          </p>
-          <p className="mb-4 text-base md:text-lg text-justify">
-            Za Gasy Ko reconnaît également que la santé est un pilier
-            fondamental du bien-être. Ainsi, l&apos;association travaille en
-            partenariat avec des professionnels de la santé pour fournir des
-            soins médicaux essentiels aux communautés malgaches les plus
-            vulnérables. Des campagnes de sensibilisation sont menées pour
-            promouvoir l&apos;hygiène, la prévention des maladies et les
-            pratiques de vie saines.
-          </p>
-          <p className="mb-4 text-base md:text-lg text-justify">
-            En réunissant des ressources, des compétences et des idées
-            novatrices, Za Gasy Ko incarne la capacité de la jeunesse malgache
-            et de ses alliés à créer un avenir meilleur. Chaque don, chaque
-            bénévole et chaque partenaire contribuent à renforcer l&apos;impact
-            de l&apos;association et à faire progresser sa mission altruiste.
-          </p>
-          <p className="mb-4 text-base md:text-lg text-justify">
-            En somme, Za Gasy Ko se profile comme un exemple inspirant de
-            solidarité et d&apos;action collective. À travers son engagement
-            envers les enfants malgaches et les populations défavorisées,
-            l&apos;association façonne un avenir où l&apos;espoir prévaut sur
-            les difficultés et où la compassion ouvre la voie à un changement
-            positif durable.
-          </p>
+          <div className="mx-auto w-full max-w-6xl">
+            <h1 className="font-semibold leading-tight tracking-tight text-3xl md:text-4xl mb-4">
+              Quel est notre but ?
+            </h1>
+            <p className="mb-4 text-base md:text-lg text-justify">
+              Comme d&apos;autres associations humanitaires, nous voulons juste
+              <span className="font-bold text-red-300">
+                {" "}
+                apporter un peu d&apos;aide{" "}
+              </span>{" "}
+              à Madagascar ! Lorsqu&apos;on a été témoin d&apos;une grande
+              pauvreté, on ne peut pas faire semblant de n&apos;avoir rien vu.
+              La suite dépend des moyens !
+            </p>
+            <h1 className="font-semibold leading-tight tracking-tight text-3xl md:text-4xl mb-4 mt-10">
+              Comment agir ?
+            </h1>
+            <p className="mb-4 text-base md:text-lg text-justify">
+              Za Gasy Ko travaille avec des bénévoles sur place.
+            </p>
+            <p className="mb-4 text-base md:text-lg text-justify">
+              Nos interventions se concentrent principalement sur trois domaines
+              essentiels : l&apos;éducation, la santé et l&apos;alimentation.
+            </p>
+            <p className="mb-4 text-base md:text-lg text-justify">
+              Nous sommes organisés en plusieurs équipes qui, ensemble, forment
+              une chaîne. Cette chaîne, selon nous, a une valeur inestimable,
+              bien plus précieuse que l’or :
+            </p>
+            <ol className="mb-4 text-base md:text-lg text-justify list-decimal list-inside">
+              <li>
+                Les bénéficiaires d’aide, qui prennent conscience des principes
+                d’autonomie et deviennent acteurs de leur propre développement.
+              </li>
+              <li>
+                Les parents courageux, qui soutiennent leurs enfants dans leur
+                parcours scolaire.
+              </li>
+              <li>
+                Les bénévoles intègres et altruistes, sans qui les aides
+                risqueraient de ne pas atteindre leur véritable destination :
+                les enfants.
+              </li>
+              <li>
+                Les merveilleux donateurs, qui nous offrent leur temps, leur
+                soutien financier, matériel, et parfois même moral. Sans eux,
+                nos actions seraient limitées.
+              </li>
+            </ol>
+            <p className="mb-4 text-base md:text-lg text-justify">
+              En réunissant des ressources, des compétences et des idées
+              novatrices, Za Gasy Ko incarne la capacité de la jeunesse malgache
+              et de ses alliés à créer un avenir meilleur. Chaque don, chaque
+              bénévole et chaque partenaire contribuent à renforcer
+              l&apos;impact de l&apos;association et à faire progresser sa
+              mission altruiste.
+            </p>
+          </div>
           <div className="items-center mt-10">
             <h1 className="font-semibold leading-tight tracking-tight text-3xl md:text-4xl mb-4 mt-8">
               Quelques photos de nos actions

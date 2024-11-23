@@ -125,8 +125,8 @@ const Page = () => {
         >
           <h2 className="text-3xl font-bold">Nos Volontaires à Madagascar</h2>
           <p className="mt-2 text-lg">
-            Découvrez les témoignages de nos volontaires qui font une réelle
-            différence sur le terrain.
+            Nos volontaires à Madagascar : en cliquant sur leurs noms, ils ont
+            partagé leurs motivations.
           </p>
         </motion.div>
 
