@@ -145,7 +145,7 @@ export const teamMembers = [
     image: "/people/reynald.jpg",
     role: "Cofondateurs de l'association",
     description:
-      "Reynald n'est plus parmis nous mais il occupe une place importante dans l'organisation de l'association. Il a été un grand soutien pour l'association et a contribué à son développement. Catherine est toujours active dans l'association et continue à soutenir les actions de Za Gasy Ko.",
+      "Reynald n'est plus parmi nous mais il occupe une place importante dans l'organisation de l'association. Il a été un grand soutien pour l'association et a contribué à son développement. Catherine est toujours active dans l'association et continue à soutenir les actions de Za Gasy Ko.",
   },
 ];
 
@@ -206,4 +206,5 @@ export const images = [
   "/actions/photo5.jpg",
   "/actions/photo6.jpg",
   "/actions/photo7.jpg",
+  "/actions/photo8.jpg",
 ];
