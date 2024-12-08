@@ -32,8 +32,8 @@ const NavBar = () => {
             <Image
               alt="Logo Za Gasy Ko"
               src="/Logo.png"
-              width={140}
-              height={70}
+              width={120} // Réduire de 140 à 120
+              height={60} // Réduire de 70 à 60
               className="object-contain transition-transform hover:scale-105"
               priority
             />

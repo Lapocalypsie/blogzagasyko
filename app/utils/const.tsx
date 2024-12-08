@@ -189,6 +189,11 @@ export const volunteerMembers = [
       Pour moi, aider les autres avec un cœur pur et désintéressé est essentiel. Je crois fermement que cette attitude attire des bénédictions dans ma vie.  
       Enfin, je veux voir mon entourage progresser. En aidant, je deviens un exemple positif pour ma communauté, tout en encourageant les autres à suivre cette voie.`,
   },
+  {
+    name: "Olga",
+    image: "/people/olga.jpg",
+    testimony: "",
+  },
 ];
 
 export const images = [
