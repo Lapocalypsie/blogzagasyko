@@ -17,7 +17,7 @@ const NavBar = () => {
           <a href="/" className="flex items-center">
             <Image
               alt="Logo"
-              src="/Logo.svg"
+              src="/Logo.png"
               width={120}
               height={60}
               className="object-contain"
