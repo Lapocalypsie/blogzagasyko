@@ -120,13 +120,6 @@ export const allImages = [
 
 export const teamMembers = [
   {
-    name: "Jimmy RASOLOSOA",
-    image: "/people/jimmy.png",
-    role: "Vice trésorier",
-    description:
-      "Passionné par l'entrepreneuriat et le développement durable à Madagascar.",
-  },
-  {
     name: "Norosoa Rasolosoa",
     image: "/people/norosoa.jpg",
     role: "Présidente de l'Association",
@@ -146,6 +139,13 @@ export const teamMembers = [
     role: "Secrétaire",
     description:
       "Engagée pour la promotion de la culture malgache et la solidarité.",
+  },
+  {
+    name: "Reynald et Catherine",
+    image: "/people/reynald.jpg",
+    role: "Cofondateurs de l'association",
+    description:
+      "Reynald n'est plus parmis nous mais il occupe une place importante dans l'organisation de l'association. Il a été un grand soutien pour l'association et a contribué à son développement. Catherine est toujours active dans l'association et continue à soutenir les actions de Za Gasy Ko.",
   },
 ];
 
@@ -176,9 +176,18 @@ export const volunteerMembers = [
   },
   {
     name: "Edwige",
-    image: "/people/edwige.jpeg",
+    image: "/people/edwige1.jpeg",
     testimony:
       "En août 2009, lors d'une visite à Vohitrafeno, mon mari a croisé une jeune collégienne qui vendait des boules de manioc râpée pour acheter des cahiers. Ce moment nous a inspirés à aider. Conscients des difficultés des familles rurales, nous avons décidé de donner des fournitures scolaires chaque année pour alléger leur charge et offrir un avenir meilleur aux enfants.",
+  },
+  {
+    name: "Rova et Tina",
+    image: "/people/rova.jpeg",
+    testimony: `
+      Mon éducation a sûrement joué un rôle important. Mes parents, qui ont toujours été des exemples pour moi, aiment aider les autres, et cela m'a profondément inspiré.  
+      Je ressens avec gratitude la chance que Dieu m'a offerte dans la vie. Ce que j'ai reçu gratuitement, je suis convaincu qu'il est de mon devoir de le partager de la même manière.  
+      Pour moi, aider les autres avec un cœur pur et désintéressé est essentiel. Je crois fermement que cette attitude attire des bénédictions dans ma vie.  
+      Enfin, je veux voir mon entourage progresser. En aidant, je deviens un exemple positif pour ma communauté, tout en encourageant les autres à suivre cette voie.`,
   },
 ];
 
@@ -189,4 +198,12 @@ export const images = [
   "/actions/nouriture.jpeg",
   "/actions/prisca_oil.jpeg",
   "/actions/covid.jpeg",
+  "/actions/covid.jpg",
+  "/actions/photo1.jpg",
+  "/actions/photo2.jpg",
+  "/actions/photo3.jpg",
+  "/actions/photo4.jpg",
+  "/actions/photo5.jpg",
+  "/actions/photo6.jpg",
+  "/actions/photo7.jpg",
 ];
