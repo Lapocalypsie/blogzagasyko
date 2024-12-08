@@ -26,7 +26,10 @@ const Page = () => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.1 * index, duration: 0.3 }}
-      className="relative aspect-square overflow-hidden rounded-lg bg-slate-50 cursor-pointer"
+      className="relative aspect-square overflow-hidden rounded-xl cursor-pointer 
+        shadow-sm hover:shadow-md 
+        transition-all duration-300 ease-in-out
+        bg-white border border-gray-100"
       onClick={onClick}
     >
       <Image
@@ -34,12 +37,16 @@ const Page = () => {
         src={person.image}
         layout="fill"
         objectFit="cover"
-        className="transition-transform duration-300 ease-in-out transform hover:scale-110"
+        className="transition-transform duration-500 ease-in-out transform hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-        <div className="absolute bottom-4 left-4 right-4 text-white">
-          <h3 className="text-lg font-semibold">{person.name}</h3>
-          {person.role && <p className="text-sm">{person.role}</p>}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+        <div className="p-3 w-full bg-white/20 backdrop-blur-sm">
+          <h3 className="text-lg font-semibold text-white truncate">
+            {person.name}
+          </h3>
+          {person.role && (
+            <p className="text-sm text-white/80 truncate">{person.role}</p>
+          )}
         </div>
       </div>
     </motion.div>
@@ -76,7 +83,8 @@ const Page = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-brand-primary mb-3 mt-2 text-center text-4xl font-bold tracking-tight dark:text-white lg:leading-snug"
+          className="text-brand-primary mb-3 mt-2 text-center text-4xl font-bold tracking-tight dark:text-white lg:leading-snug
+          transition-colors duration-300 hover:text-blue-600"
         >
           À Propos de Nous
         </motion.h1>
@@ -87,7 +95,7 @@ const Page = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-center mb-8"
         >
-          <p className="text-lg font-medium">
+          <p className="text-lg font-medium text-gray-600 hover:text-gray-800 transition-colors duration-300">
             L&apos;équipe passionnée derrière Za Gasy Ko
           </p>
         </motion.div>
@@ -104,15 +112,18 @@ const Page = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mb-8"
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md mb-8 
+            border-l-4 border-blue-500 hover:shadow-lg transition-all duration-300"
           >
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-xl font-semibold mb-2 text-blue-700">
               {selectedMember.name}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">
               {selectedMember.role}
             </p>
-            <p>{selectedMember.description}</p>
+            <p className="text-gray-800 dark:text-gray-200">
+              {selectedMember.description}
+            </p>
           </motion.div>
         )}
 
@@ -123,8 +134,10 @@ const Page = () => {
           transition={{ delay: 0.5, duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold">Nos Volontaires à Madagascar</h2>
-          <p className="mt-2 text-lg">
+          <h2 className="text-3xl font-bold text-brand-primary hover:text-blue-600 transition-colors duration-300">
+            Nos Volontaires à Madagascar
+          </h2>
+          <p className="mt-2 text-lg text-gray-600 hover:text-gray-800 transition-colors duration-300">
             Nos volontaires à Madagascar : en cliquant sur leurs noms, ils ont
             partagé leurs motivations.
           </p>
@@ -142,13 +155,16 @@ const Page = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mb-8"
+            className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md mb-8 
+            border-l-4 border-blue-500 hover:shadow-lg transition-all duration-300"
           >
-            <h3 className="text-xl font-semibold mb-2">
+            <h3 className="text-xl font-semibold mb-2 text-blue-700">
               {selectedVolunteer.name}
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4">Témoignage</p>
-            <p>{selectedVolunteer.testimony}</p>
+            <p className="text-gray-800 dark:text-gray-200">
+              {selectedVolunteer.testimony}
+            </p>
           </motion.div>
         )}
 
@@ -156,7 +172,8 @@ const Page = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="prose mx-auto mt-14 dark:prose-invert text-justify"
+          className="prose mx-auto mt-14 dark:prose-invert text-justify 
+          bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
         >
           <p>
             Chacun de nous apporte une passion unique et une expertise dédiée
@@ -169,7 +186,7 @@ const Page = () => {
             pour collaborer avec nous, n&apos;hésitez pas à{" "}
             <Link
               href="/contact"
-              className="text-red-300 font-semibold hover:underline"
+              className="text-blue-600 font-semibold hover:underline transition-colors duration-300"
             >
               nous contacter
             </Link>
